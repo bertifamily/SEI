@@ -1,0 +1,14 @@
+@import "bootstrap.min";
+@import "bootstrap-theme.min";
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+/* Override Rail's default error calls with Bootstrap 3 */
+.field_with_errors {
+  @extend .has-error;
+}
+

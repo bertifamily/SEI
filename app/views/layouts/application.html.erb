@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="<%= meta_description %>">
+  <meta name="author" content="<%= meta_author %>">
+  <meta name="Keywords" content="<%= meta_keywords %>">
+
+  <title><%= full_title(yield(:title)) %></title>
+
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <%= content_for :head %>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+  <a href="#Top"></a>
+  
+  <%= content_for :head, auto_discovery_link_tag(:atom, posts_url(format: "atom")) %>
+
+</head>
+  
+<body>
+
+  <div id="wrapper">
+    <div id="header">
+      <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to site_name, site_url, :class => "navbar-brand" %>
+          </div><!-- /.navbar-header -->
+
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav pull-right">
+              <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to "Home", root_path %></li>
+              <li class="<%= 'active' if current_page?(project_path) %>"><%= link_to "Projects", project_path %></li>
+              <li class="<%= 'active' if current_page?(about_path) %>"><%= link_to "About Us", about_path %></li>
+              <li class="<%= 'active' if current_page?(contact_path) %>"><%= link_to "Contact", contact_path %></li>
+              <li class="<%= 'active' if current_page?(blog_path) %>"><%= link_to "Blogs", blog_path %></li>
+              <!-- <li><%= link_to "Manage Posts", posts_url %></li> -->
+            </ul>
+          </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+      </div><!-- /.navbar -->
+    </div><!-- /#header -->
+    
+    <div id="content">
+      <% if current_page?(root_path) %>
+       <% if content_for?(:jumbotron) %>
+         <div class="jumbotron">
+           <div class="container">
+             <%= yield :jumbotron %>
+           </div><!-- /container -->
+         </div><!-- jumbotron -->
+       <% end %><!-- jumbotron -->
+      <% else %>
+        <div class="container">
+        </div>
+      <% end %><!-- current-page -->
+
+      <%= yield %>
+    </div><!-- content -->
+
+    <div id="end-footer">
+      
+        
+          <div class="container">
+            <div class="row">
+              <div class="span12">
+                <p>&copy; SEI Pty Ltd <span id="totop" class="pull-right">Back to Top</span></p>
+              </div><!-- /span12 -->
+            </div><!-- /row -->
+          </div><!-- /container -->
+        
+      
+    </div><!-- /end-footer -->
+  </div><!-- #wrapper -->
+
+ </body>
+</html>

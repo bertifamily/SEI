@@ -1,9 +1,8 @@
 # config valid only for current version of Capistrano
-lock '3.3.3'
 
-set :application, 'SEI2'
-set :repo_url, 'git@github.com:bertifamily/SEI2.git'
-set :deploy_to, '/opt/www/SEI2'
+set :application, 'SEI'
+set :repo_url, 'git@github.com:bertifamily/sei.git'
+set :deploy_to, '/opt/www/sei'
 set :user, 'deploy'
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
 

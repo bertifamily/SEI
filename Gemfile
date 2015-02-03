@@ -44,8 +44,7 @@ gem 'net-ssh', '2.9.1'
 gem 'unicorn' 
 
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
-
+gem 'passenger'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
